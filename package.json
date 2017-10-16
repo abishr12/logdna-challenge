@@ -1,0 +1,29 @@
+{
+  "name": "logdna-challenge",
+  "version": "1.0.0",
+  "description": "clearbit enrichment info",
+  "main": "clearbit-info.js",
+  "dependencies": {
+    "clearbit": "^1.2.3",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abishr12/logdna-challenge.git"
+  },
+  "keywords": [
+    "clearbit",
+    "email",
+    "enrichment"
+  ],
+  "author": "Adham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abishr12/logdna-challenge/issues"
+  },
+  "homepage": "https://github.com/abishr12/logdna-challenge#readme"
+}
