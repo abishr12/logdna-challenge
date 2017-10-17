@@ -3,8 +3,6 @@ var clearbit = require("clearbit")("sk_46969d9c152268e395a367ea62ef5881");
 var fs = require("fs");
 var inquirer = require("inquirer");
 
-var emailSearch = "";
-
 inquirer
   .prompt([
     {
