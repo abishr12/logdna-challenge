@@ -5,7 +5,8 @@
   "main": "clearbit-info.js",
   "dependencies": {
     "clearbit": "^1.2.3",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "inquirer": "^3.3.0"
   },
   "devDependencies": {},
   "scripts": {
