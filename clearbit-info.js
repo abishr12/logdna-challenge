@@ -1,6 +1,8 @@
+//Node Packages
 var clearbit = require("clearbit")("sk_46969d9c152268e395a367ea62ef5881");
 var fs = require("fs");
 var inquirer = require("inquirer");
+
 var emailSearch = "";
 
 inquirer
@@ -14,22 +16,26 @@ inquirer
     }
   ])
   .then(function(inquirerResponse) {
+    // If the "list" choice is selected
     if (inquirerResponse.emailChoices === "List") {
+      //Reads emails.txt file
       fs.readFile("emails.txt", "utf8", function(err, data) {
         if (err) {
           console.log(err);
         }
-
-        var something = String(data.split(" "));
-        var array = something.split("\n");
+        var something = data.trim();
+        var clean = String(something.split(" "));
+        var array = clean.split(",");
         //console.log(array);
+
         for (var i = 0; i < array.length; i++) {
           var emailSearch = array[i];
-          number = i;
+          //console.log(emailSearch);
           clearbitSearch(emailSearch);
         }
       });
     } else if (inquirerResponse.emailChoices === "Type It Out") {
+      // if user chooses to type out the email
       inquirer
         .prompt([
           {
@@ -44,30 +50,15 @@ inquirer
     }
   });
 
-/*
-fs.readFile("emails.txt", "utf8", function(err, data) {
-  if (err) {
-    console.log(err);
-  }
-
-  var something = String(data.split(" "));
-  var array = something.split("\n");
-  //console.log(array);
-  for (var i = 0; i < array.length; i++) {
-    var emailSearch = array[i];
-    number = i;
-    clearbitSearch(emailSearch);
-  }
-});*/
-
-function clearbitSearch(emails) {
+//Clearbit Search Function
+function clearbitSearch(emailsToSearch) {
   clearbit.Enrichment
-    .find({ email: emails, stream: true })
+    .find({ email: emailsToSearch, stream: true })
     .then(function(response) {
       var target = response.person;
       var company = response.company;
 
-      //Person's information
+      //Target's information
       var name = "Name: " + target.name.fullName;
       var email = "\nEmail: " + target.email;
       var employmentCompany =
